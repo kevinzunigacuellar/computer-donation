@@ -6,6 +6,7 @@ import * as z from "zod";
 const supabase = useSupabaseClient();
 const formSchema = toTypedSchema(
   z.object({
+    name: z.string().min(2).max(50),
     email: z.string().email(),
     password: z.string().min(8).max(50),
     // This is used to display form level errors (server errors from Supabase auth)
@@ -19,12 +20,18 @@ const { handleSubmit, setFieldError, isSubmitting } = useForm({
 
 const onSubmit = handleSubmit(async (values) => {
   try {
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signUp({
       email: values.email,
       password: values.password,
+      options: {
+        data: {
+          name: values.name,
+          role: "user",
+        },
+      },
     });
     if (error) throw new Error(error.message);
-    await navigateTo("/admin/inventory");
+    await navigateTo("/login");
   } catch (error) {
     if (error instanceof Error) {
       setFieldError("form", error.message);
@@ -34,17 +41,24 @@ const onSubmit = handleSubmit(async (values) => {
 </script>
 <template>
   <div class="w-full lg:grid lg:grid-cols-2 min-h-svh">
-    <div class="flex items-center justify-center py-12">
+    <div class="flex items-center justify-center py-12 order-2">
       <div class="mx-auto grid w-[350px] gap-6">
         <div class="grid gap-2 text-center">
-          <h1 class="text-3xl font-bold tracking-tight">
-            Login to your account
-          </h1>
+          <h1 class="text-3xl font-bold tracking-tight">Create an account</h1>
           <p class="text-balance text-muted-foreground">
-            Enter your email below to login to your account
+            Enter your email below to create an account
           </p>
         </div>
         <form @submit="onSubmit" class="grid gap-6">
+          <FormField v-slot="{ componentField }" name="name">
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input type="name" v-bind="componentField" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          </FormField>
           <FormField v-slot="{ componentField }" name="email">
             <FormItem>
               <FormLabel>Email</FormLabel>
@@ -56,15 +70,7 @@ const onSubmit = handleSubmit(async (values) => {
           </FormField>
           <FormField v-slot="{ componentField }" name="password">
             <FormItem>
-              <div class="flex items-center">
-                <FormLabel for="password">Password</FormLabel>
-                <a
-                  href="/forgot-password"
-                  class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                >
-                  Forgot your password?
-                </a>
-              </div>
+              <FormLabel for="password">Password</FormLabel>
               <FormControl>
                 <Input type="password" v-bind="componentField" />
               </FormControl>
@@ -72,7 +78,7 @@ const onSubmit = handleSubmit(async (values) => {
             </FormItem>
           </FormField>
           <Button type="submit" class="w-full" :disabled="isSubmitting">
-            Login
+            Create account
           </Button>
           <FormField name="form">
             <FormItem>
@@ -81,14 +87,13 @@ const onSubmit = handleSubmit(async (values) => {
           </FormField>
         </form>
         <div class="mt-4 text-center text-sm">
-          Don't have an account?
-          <NuxtLink to="/signup" class="underline underline-offset-4">
-            Sign up
+          Already have an account?
+          <NuxtLink to="/login" class="underline underline-offset-4">
+            Sign in
           </NuxtLink>
         </div>
       </div>
     </div>
-
     <div class="hidden bg-muted lg:block">
       <img
         src="/placeholder.svg"

@@ -17,6 +17,6 @@ const { name, formMessageId } = useFormField();
     data-slot="form-message"
     as="p"
     :name="toValue(name)"
-    :class="cn('text-destructive-foreground text-xs', props.class)"
+    :class="cn('text-destructive-foreground text-xs -mt-1', props.class)"
   />
 </template>

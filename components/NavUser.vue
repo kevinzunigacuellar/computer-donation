@@ -15,25 +15,12 @@ const { isMobile } = useSidebar();
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 
-const { data: staff } = await useAsyncData("staff", async () => {
-  const uid = user.value?.id;
-
-  if (!uid) return null;
-
-  const { data } = await supabase
-    .from("staff")
-    .select("*")
-    .eq("id", uid)
-    .single();
-
-  return data;
-});
 const signOut = async () => {
   const { error } = await supabase.auth.signOut();
   if (error) {
     console.log(error);
   } else {
-    navigateTo("/admin/login");
+    navigateTo("/login");
   }
 };
 </script>
@@ -48,12 +35,19 @@ const signOut = async () => {
             class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
           >
             <Avatar class="h-8 w-8 rounded-lg">
-              <!-- <AvatarImage :src="user.avatar" :alt="user.name" /> -->
+              <AvatarImage
+                src="/placeholder.svg"
+                :alt="user?.user_metadata.name"
+              />
               <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
             </Avatar>
             <div class="grid flex-1 text-left text-sm leading-tight">
-              <span class="truncate font-medium">{{ staff?.name }}</span>
-              <span class="truncate text-xs">{{ user?.email }}</span>
+              <span class="truncate font-medium">{{
+                user?.user_metadata.name
+              }}</span>
+              <span class="truncate text-xs">{{
+                user?.user_metadata.email
+              }}</span>
             </div>
             <ChevronsUpDown class="ml-auto size-4" />
           </SidebarMenuButton>
@@ -67,12 +61,19 @@ const signOut = async () => {
           <DropdownMenuLabel class="p-0 font-normal">
             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
               <Avatar class="h-8 w-8 rounded-lg">
-                <!-- <AvatarImage :src="user.avatar" :alt="user.name" /> -->
+                <AvatarImage
+                  src="/placeholder.svg"
+                  :alt="user?.user_metadata.name"
+                />
                 <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
               </Avatar>
               <div class="grid flex-1 text-left text-sm leading-tight">
-                <span class="truncate font-semibold">{{ staff?.name }}</span>
-                <span class="truncate text-xs">{{ user?.email }}</span>
+                <span class="truncate font-semibold">{{
+                  user?.user_metadata.name
+                }}</span>
+                <span class="truncate text-xs">{{
+                  user?.user_metadata.email
+                }}</span>
               </div>
             </div>
           </DropdownMenuLabel>
