@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-import { useSidebar } from "@/components/ui/sidebar";
 import {
   BadgeCheck,
   Bell,
@@ -14,6 +11,17 @@ import {
 const { isMobile } = useSidebar();
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
+
+const userInitials = computed(() => {
+  const name = user.value?.user_metadata.name;
+  if (!name) return "AA";
+  const initials = name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+  return initials.length > 2 ? initials.slice(0, 2) : initials;
+});
 
 const signOut = async () => {
   const { error } = await supabase.auth.signOut();
@@ -36,10 +44,12 @@ const signOut = async () => {
           >
             <Avatar class="h-8 w-8 rounded-lg">
               <AvatarImage
-                src="/placeholder.svg"
+                :src="user?.user_metadata.avatar_url"
                 :alt="user?.user_metadata.name"
               />
-              <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
+              <AvatarFallback class="rounded-lg">{{
+                userInitials
+              }}</AvatarFallback>
             </Avatar>
             <div class="grid flex-1 text-left text-sm leading-tight">
               <span class="truncate font-medium">{{
@@ -62,10 +72,12 @@ const signOut = async () => {
             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
               <Avatar class="h-8 w-8 rounded-lg">
                 <AvatarImage
-                  src="/placeholder.svg"
+                  :src="user?.user_metadata.avatar_url"
                   :alt="user?.user_metadata.name"
                 />
-                <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
+                <AvatarFallback class="rounded-lg">{{
+                  userInitials
+                }}</AvatarFallback>
               </Avatar>
               <div class="grid flex-1 text-left text-sm leading-tight">
                 <span class="truncate font-semibold">{{
@@ -77,13 +89,6 @@ const signOut = async () => {
               </div>
             </div>
           </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <Sparkles />
-              Upgrade to Pro
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem>

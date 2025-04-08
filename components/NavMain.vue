@@ -1,18 +1,4 @@
 <script setup lang="ts">
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import {
-  SidebarGroup,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { useMediaQuery } from "@vueuse/core";
 import { type LucideIcon, MoreHorizontal } from "lucide-vue-next";
 
 defineProps<{
