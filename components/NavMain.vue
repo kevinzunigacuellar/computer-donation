@@ -4,31 +4,31 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu";
 
 import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar'
-import { useMediaQuery } from '@vueuse/core'
-import { type LucideIcon, MoreHorizontal } from 'lucide-vue-next'
+} from "@/components/ui/sidebar";
+import { useMediaQuery } from "@vueuse/core";
+import { type LucideIcon, MoreHorizontal } from "lucide-vue-next";
 
 defineProps<{
   items: {
-    title: string
-    url: string
-    icon?: LucideIcon
-    isActive?: boolean
+    title: string;
+    url: string;
+    icon?: LucideIcon;
+    isActive?: boolean;
     items?: {
-      title: string
-      url: string
-    }[]
-  }[]
-}>()
+      title: string;
+      url: string;
+    }[];
+  }[];
+}>();
 
-const isMobile = useMediaQuery('(max-width: 768px)')
+const isMobile = useMediaQuery("(max-width: 768px)");
 </script>
 
 <template>
@@ -37,7 +37,9 @@ const isMobile = useMediaQuery('(max-width: 768px)')
       <DropdownMenu v-for="item in items" :key="item.title">
         <SidebarMenuItem>
           <DropdownMenuTrigger as-child>
-            <SidebarMenuButton class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+            <SidebarMenuButton
+              class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            >
               {{ item.title }} <MoreHorizontal class="ml-auto" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
@@ -47,7 +49,11 @@ const isMobile = useMediaQuery('(max-width: 768px)')
             :align="isMobile ? 'end' : 'start'"
             class="min-w-56 rounded-lg"
           >
-            <DropdownMenuItem v-for="childItem in item.items" :key="childItem.title" as-child>
+            <DropdownMenuItem
+              v-for="childItem in item.items"
+              :key="childItem.title"
+              as-child
+            >
               <a :href="childItem.url">{{ childItem.title }}</a>
             </DropdownMenuItem>
           </DropdownMenuContent>

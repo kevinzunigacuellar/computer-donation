@@ -5,5 +5,5 @@ definePageMeta({
 });
 </script>
 <template>
-  <p>This is the inventory page</p>
+  <p>This is the donors page</p>
 </template>

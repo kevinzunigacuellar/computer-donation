@@ -11,8 +11,8 @@ export default defineNuxtConfig({
   supabase: {
     redirectOptions: {
       include: ["/admin(/*)?"],
-      login: "/admin/login",
-      callback: "/admin/confirm",
+      login: "/login",
+      callback: "/confirm",
     },
   },
   shadcn: {
@@ -20,9 +20,9 @@ export default defineNuxtConfig({
     componentDir: "./components/ui",
   },
   colorMode: {
-    classSuffix: ''
+    classSuffix: "",
   },
   routeRules: {
-    '/admin/**': { ssr: false },
-  }
+    "/admin/**": { ssr: false },
+  },
 });

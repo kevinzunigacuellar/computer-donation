@@ -1,23 +1,27 @@
 <script setup lang="ts">
-import { Sun, MoonStar, LaptopMinimal } from 'lucide-vue-next'
+import { Sun, MoonStar, LaptopMinimal } from "lucide-vue-next";
 
 const colorMode = useColorMode();
 
 const IconToRender = computed(() => {
   switch (colorMode.preference) {
-    case 'system':
+    case "system":
       return LaptopMinimal;
-    case 'light':
+    case "light":
       return Sun;
-    case 'dark':
+    case "dark":
       return MoonStar;
     default:
-      // This case will never happen, colorMode defaults to 'system'
-      return null;
+      // Fallback to a default icon if needed
+      return LaptopMinimal;
   }
 });
 
-const SelectValueString = computed(() => colorMode.preference.charAt(0).toUpperCase() + colorMode.preference.slice(1))
+const SelectValueString = computed(
+  () =>
+    colorMode.preference.charAt(0).toUpperCase() +
+    colorMode.preference.slice(1),
+);
 </script>
 
 <template>
@@ -31,12 +35,8 @@ const SelectValueString = computed(() => colorMode.preference.charAt(0).toUpperC
       <SelectItem value="system">
         <LaptopMinimal class="mr-1" /> System
       </SelectItem>
-      <SelectItem value="light">
-        <Sun class="mr-1" /> Light
-      </SelectItem>
-      <SelectItem value="dark">
-        <MoonStar class="mr-1" /> Dark
-      </SelectItem>
+      <SelectItem value="light"> <Sun class="mr-1" /> Light </SelectItem>
+      <SelectItem value="dark"> <MoonStar class="mr-1" /> Dark </SelectItem>
     </SelectContent>
   </Select>
 </template>

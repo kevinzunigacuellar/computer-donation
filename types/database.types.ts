@@ -4,7 +4,7 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json | undefined }
-  | Json[]
+  | Json[];
 
 export type Database = {
   public: {
@@ -13,221 +13,221 @@ export type Database = {
         Row: {
           condition_status:
             | Database["public"]["Enums"]["donation_item_condition"]
-            | null
-          created_at: string | null
-          donation_submission_id: number | null
-          id: number
-          name: string
-          quantity: number | null
+            | null;
+          created_at: string | null;
+          donation_submission_id: number | null;
+          id: number;
+          name: string;
+          quantity: number | null;
           status:
             | Database["public"]["Enums"]["donation_submission_item_status"]
-            | null
-          updated_at: string | null
-        }
+            | null;
+          updated_at: string | null;
+        };
         Insert: {
           condition_status?:
             | Database["public"]["Enums"]["donation_item_condition"]
-            | null
-          created_at?: string | null
-          donation_submission_id?: number | null
-          id?: number
-          name: string
-          quantity?: number | null
+            | null;
+          created_at?: string | null;
+          donation_submission_id?: number | null;
+          id?: number;
+          name: string;
+          quantity?: number | null;
           status?:
             | Database["public"]["Enums"]["donation_submission_item_status"]
-            | null
-          updated_at?: string | null
-        }
+            | null;
+          updated_at?: string | null;
+        };
         Update: {
           condition_status?:
             | Database["public"]["Enums"]["donation_item_condition"]
-            | null
-          created_at?: string | null
-          donation_submission_id?: number | null
-          id?: number
-          name?: string
-          quantity?: number | null
+            | null;
+          created_at?: string | null;
+          donation_submission_id?: number | null;
+          id?: number;
+          name?: string;
+          quantity?: number | null;
           status?:
             | Database["public"]["Enums"]["donation_submission_item_status"]
-            | null
-          updated_at?: string | null
-        }
+            | null;
+          updated_at?: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "donation_submission_items_donation_submission_id_fkey"
-            columns: ["donation_submission_id"]
-            isOneToOne: false
-            referencedRelation: "donation_submissions"
-            referencedColumns: ["id"]
+            foreignKeyName: "donation_submission_items_donation_submission_id_fkey";
+            columns: ["donation_submission_id"];
+            isOneToOne: false;
+            referencedRelation: "donation_submissions";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       donation_submissions: {
         Row: {
-          created_at: string | null
-          donor_id: number | null
-          id: number
+          created_at: string | null;
+          donor_id: number | null;
+          id: number;
           status:
             | Database["public"]["Enums"]["donation_submission_status"]
-            | null
-          updated_at: string | null
-        }
+            | null;
+          updated_at: string | null;
+        };
         Insert: {
-          created_at?: string | null
-          donor_id?: number | null
-          id?: number
+          created_at?: string | null;
+          donor_id?: number | null;
+          id?: number;
           status?:
             | Database["public"]["Enums"]["donation_submission_status"]
-            | null
-          updated_at?: string | null
-        }
+            | null;
+          updated_at?: string | null;
+        };
         Update: {
-          created_at?: string | null
-          donor_id?: number | null
-          id?: number
+          created_at?: string | null;
+          donor_id?: number | null;
+          id?: number;
           status?:
             | Database["public"]["Enums"]["donation_submission_status"]
-            | null
-          updated_at?: string | null
-        }
+            | null;
+          updated_at?: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "donation_submissions_donor_id_fkey"
-            columns: ["donor_id"]
-            isOneToOne: false
-            referencedRelation: "donors"
-            referencedColumns: ["id"]
+            foreignKeyName: "donation_submissions_donor_id_fkey";
+            columns: ["donor_id"];
+            isOneToOne: false;
+            referencedRelation: "donors";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       donors: {
         Row: {
-          email: string | null
-          id: number
-          name: string
-          phone: string | null
-        }
+          email: string | null;
+          id: number;
+          name: string;
+          phone: string | null;
+        };
         Insert: {
-          email?: string | null
-          id?: number
-          name: string
-          phone?: string | null
-        }
+          email?: string | null;
+          id?: number;
+          name: string;
+          phone?: string | null;
+        };
         Update: {
-          email?: string | null
-          id?: number
-          name?: string
-          phone?: string | null
-        }
-        Relationships: []
-      }
+          email?: string | null;
+          id?: number;
+          name?: string;
+          phone?: string | null;
+        };
+        Relationships: [];
+      };
       inventory: {
         Row: {
-          created_at: string | null
-          id: number
-          location_id: number | null
-          make: string | null
-          model: string | null
-          ram: number
-          received_by: string | null
-          status: Database["public"]["Enums"]["inventory_status"] | null
-          storage: number
-          updated_at: string | null
-        }
+          created_at: string | null;
+          id: number;
+          location_id: number | null;
+          make: string | null;
+          model: string | null;
+          ram: number;
+          received_by: string | null;
+          status: Database["public"]["Enums"]["inventory_status"] | null;
+          storage: number;
+          updated_at: string | null;
+        };
         Insert: {
-          created_at?: string | null
-          id?: number
-          location_id?: number | null
-          make?: string | null
-          model?: string | null
-          ram: number
-          received_by?: string | null
-          status?: Database["public"]["Enums"]["inventory_status"] | null
-          storage: number
-          updated_at?: string | null
-        }
+          created_at?: string | null;
+          id?: number;
+          location_id?: number | null;
+          make?: string | null;
+          model?: string | null;
+          ram: number;
+          received_by?: string | null;
+          status?: Database["public"]["Enums"]["inventory_status"] | null;
+          storage: number;
+          updated_at?: string | null;
+        };
         Update: {
-          created_at?: string | null
-          id?: number
-          location_id?: number | null
-          make?: string | null
-          model?: string | null
-          ram?: number
-          received_by?: string | null
-          status?: Database["public"]["Enums"]["inventory_status"] | null
-          storage?: number
-          updated_at?: string | null
-        }
+          created_at?: string | null;
+          id?: number;
+          location_id?: number | null;
+          make?: string | null;
+          model?: string | null;
+          ram?: number;
+          received_by?: string | null;
+          status?: Database["public"]["Enums"]["inventory_status"] | null;
+          storage?: number;
+          updated_at?: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "inventory_location_id_fkey"
-            columns: ["location_id"]
-            isOneToOne: false
-            referencedRelation: "locations"
-            referencedColumns: ["id"]
+            foreignKeyName: "inventory_location_id_fkey";
+            columns: ["location_id"];
+            isOneToOne: false;
+            referencedRelation: "locations";
+            referencedColumns: ["id"];
           },
           {
-            foreignKeyName: "inventory_received_by_fkey"
-            columns: ["received_by"]
-            isOneToOne: false
-            referencedRelation: "staff"
-            referencedColumns: ["id"]
+            foreignKeyName: "inventory_received_by_fkey";
+            columns: ["received_by"];
+            isOneToOne: false;
+            referencedRelation: "staff";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       locations: {
         Row: {
-          address: string | null
-          id: number
-          name: string
-        }
+          address: string | null;
+          id: number;
+          name: string;
+        };
         Insert: {
-          address?: string | null
-          id?: number
-          name: string
-        }
+          address?: string | null;
+          id?: number;
+          name: string;
+        };
         Update: {
-          address?: string | null
-          id?: number
-          name?: string
-        }
-        Relationships: []
-      }
+          address?: string | null;
+          id?: number;
+          name?: string;
+        };
+        Relationships: [];
+      };
       staff: {
         Row: {
-          id: string
-          name: string | null
-        }
+          id: string;
+          name: string | null;
+        };
         Insert: {
-          id: string
-          name?: string | null
-        }
+          id: string;
+          name?: string | null;
+        };
         Update: {
-          id?: string
-          name?: string | null
-        }
-        Relationships: []
-      }
-    }
+          id?: string;
+          name?: string | null;
+        };
+        Relationships: [];
+      };
+    };
     Views: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Functions: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Enums: {
-      donation_item_condition: "Good" | "Needs Repair" | "Rejected"
-      donation_submission_item_status: "Pending" | "Accepted" | "Rejected"
-      donation_submission_status: "Pending" | "Approved" | "Rejected"
-      inventory_status: "Available" | "Reserved" | "Redistributed"
-    }
+      donation_item_condition: "Good" | "Needs Repair" | "Rejected";
+      donation_submission_item_status: "Pending" | "Accepted" | "Rejected";
+      donation_submission_status: "Pending" | "Approved" | "Rejected";
+      inventory_status: "Available" | "Reserved" | "Redistributed";
+    };
     CompositeTypes: {
-      [_ in never]: never
-    }
-  }
-}
+      [_ in never]: never;
+    };
+  };
+};
 
-type PublicSchema = Database[Extract<keyof Database, "public">]
+type PublicSchema = Database[Extract<keyof Database, "public">];
 
 export type Tables<
   PublicTableNameOrOptions extends
@@ -240,7 +240,7 @@ export type Tables<
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
       Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
-      Row: infer R
+      Row: infer R;
     }
     ? R
     : never
@@ -248,11 +248,11 @@ export type Tables<
         PublicSchema["Views"])
     ? (PublicSchema["Tables"] &
         PublicSchema["Views"])[PublicTableNameOrOptions] extends {
-        Row: infer R
+        Row: infer R;
       }
       ? R
       : never
-    : never
+    : never;
 
 export type TablesInsert<
   PublicTableNameOrOptions extends
@@ -263,17 +263,17 @@ export type TablesInsert<
     : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Insert: infer I
+      Insert: infer I;
     }
     ? I
     : never
   : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
     ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
-        Insert: infer I
+        Insert: infer I;
       }
       ? I
       : never
-    : never
+    : never;
 
 export type TablesUpdate<
   PublicTableNameOrOptions extends
@@ -284,17 +284,17 @@ export type TablesUpdate<
     : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Update: infer U
+      Update: infer U;
     }
     ? U
     : never
   : PublicTableNameOrOptions extends keyof PublicSchema["Tables"]
     ? PublicSchema["Tables"][PublicTableNameOrOptions] extends {
-        Update: infer U
+        Update: infer U;
       }
       ? U
       : never
-    : never
+    : never;
 
 export type Enums<
   PublicEnumNameOrOptions extends
@@ -307,14 +307,14 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof PublicSchema["Enums"]
     ? PublicSchema["Enums"][PublicEnumNameOrOptions]
-    : never
+    : never;
 
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof PublicSchema["CompositeTypes"]
     | { schema: keyof Database },
   CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
-    schema: keyof Database
+    schema: keyof Database;
   }
     ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
     : never = never,
@@ -322,4 +322,4 @@ export type CompositeTypes<
   ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
   : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
     ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
-    : never
+    : never;
