@@ -1,14 +1,5 @@
 <script setup lang="ts">
 const route = useRoute();
-
-// Define a mapping of route paths to titles
-const pageTitles: Record<string, string> = {
-  "/admin/inventory": "Inventory",
-  "/admin/donors": "Donors",
-};
-
-// Get the title based on the current route
-const pageTitle = computed(() => pageTitles[route.path] || "Dashboard");
 </script>
 <template>
   <SidebarProvider>
@@ -23,7 +14,7 @@ const pageTitle = computed(() => pageTitles[route.path] || "Dashboard");
             orientation="vertical"
             class="mr-4 data-[orientation=vertical]:h-4"
           />
-          <h1 class="text-base font-medium">{{ pageTitle }}</h1>
+          <h1 class="text-base font-medium">{{ route.meta.name }}</h1>
         </div>
         <ThemeSelect />
       </header>
