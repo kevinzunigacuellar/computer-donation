@@ -62,12 +62,12 @@ const onSubmit = handleSubmit(async (values) => {
             <FormItem>
               <div class="flex items-center">
                 <FormLabel for="password">Password</FormLabel>
-                <a
-                  href="/forgot-password"
+                <NuxtLink
+                  to="/forgot-password"
                   class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                 >
                   Forgot your password?
-                </a>
+                </NuxtLink>
               </div>
               <FormControl>
                 <Input type="password" v-bind="componentField" />
