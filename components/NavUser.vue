@@ -7,6 +7,7 @@ import {
   LogOut,
   Sparkles,
 } from "lucide-vue-next";
+import { useSidebar } from "@/components/ui/sidebar";
 
 const { isMobile } = useSidebar();
 const user = useSupabaseUser();
