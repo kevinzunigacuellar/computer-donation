@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: "admin-layout",
-  middleware: ["staff-only"],
+  middleware: ["auth", "staff-only"],
   name: "Donors",
 });
 </script>

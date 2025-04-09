@@ -5,12 +5,12 @@ import { Laptop, Package, SquareUserRound } from "lucide-vue-next";
 const props = defineProps<SidebarProps>();
 const navRoutes = [
   {
-    path: "/admin/inventory/",
+    path: "/inventory/",
     label: "Inventory",
     icon: Package,
   },
   {
-    path: "/admin/donors/",
+    path: "/donors/",
     label: "Donors",
     icon: SquareUserRound,
   },

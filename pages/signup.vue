@@ -4,7 +4,7 @@ import { toTypedSchema } from "@vee-validate/zod";
 import * as z from "zod";
 
 definePageMeta({
-  middleware: ["is-authenticated"],
+  middleware: ["redirect-auth"],
 });
 
 const supabase = useSupabaseClient();

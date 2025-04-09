@@ -10,10 +10,6 @@ export default defineNuxtConfig({
   modules: ["shadcn-nuxt", "@nuxtjs/supabase", "@nuxtjs/color-mode"],
   supabase: {
     redirect: false,
-    redirectOptions: {
-      login: "/login",
-      callback: "/confirm",
-    },
   },
   shadcn: {
     prefix: "",
@@ -21,8 +17,5 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: "",
-  },
-  routeRules: {
-    "/admin/**": { ssr: false },
   },
 });

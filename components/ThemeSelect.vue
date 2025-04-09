@@ -25,18 +25,20 @@ const SelectValueString = computed(
 </script>
 
 <template>
-  <Select v-model="colorMode.preference">
-    <SelectTrigger>
-      <SelectValue class="w-28">
-        <component :is="IconToRender" class="mr-1" /> {{ SelectValueString }}
-      </SelectValue>
-    </SelectTrigger>
-    <SelectContent>
-      <SelectItem value="system">
-        <LaptopMinimal class="mr-1" /> System
-      </SelectItem>
-      <SelectItem value="light"> <Sun class="mr-1" /> Light </SelectItem>
-      <SelectItem value="dark"> <MoonStar class="mr-1" /> Dark </SelectItem>
-    </SelectContent>
-  </Select>
+  <ClientOnly>
+    <Select v-model="colorMode.preference">
+      <SelectTrigger>
+        <SelectValue class="w-28">
+          <component :is="IconToRender" class="mr-1" /> {{ SelectValueString }}
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="system">
+          <LaptopMinimal class="mr-1" /> System
+        </SelectItem>
+        <SelectItem value="light"> <Sun class="mr-1" /> Light </SelectItem>
+        <SelectItem value="dark"> <MoonStar class="mr-1" /> Dark </SelectItem>
+      </SelectContent>
+    </Select>
+  </ClientOnly>
 </template>

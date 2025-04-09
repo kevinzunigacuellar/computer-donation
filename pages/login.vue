@@ -4,7 +4,7 @@ import { toTypedSchema } from "@vee-validate/zod";
 import * as z from "zod";
 
 definePageMeta({
-  middleware: ["is-authenticated"],
+  middleware: ["redirect-auth"],
 });
 
 const supabase = useSupabaseClient();
@@ -28,7 +28,7 @@ const onSubmit = handleSubmit(async (values) => {
       password: values.password,
     });
     if (error) throw new Error(error.message);
-    await navigateTo("/admin/inventory/");
+    await navigateTo("/inventory/");
   } catch (error) {
     if (error instanceof Error) {
       setFieldError("form", error.message);
