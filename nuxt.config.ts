@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   modules: ["shadcn-nuxt", "@nuxtjs/supabase", "@nuxtjs/color-mode"],
   supabase: {
     redirectOptions: {
-      include: ["/admin(/*)?"],
+      exclude: ["/signup(/)?", "/", "/forgot-password(/)?"],
       login: "/login",
       callback: "/confirm",
     },

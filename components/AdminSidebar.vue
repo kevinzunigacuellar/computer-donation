@@ -3,22 +3,27 @@ import type { SidebarProps } from "@/components/ui/sidebar";
 import { Laptop, Package, SquareUserRound } from "lucide-vue-next";
 
 const props = defineProps<SidebarProps>();
-
 const navRoutes = [
   {
-    path: "/admin/inventory",
+    path: "/admin/inventory/",
     label: "Inventory",
     icon: Package,
   },
   {
-    path: "/admin/donors",
+    path: "/admin/donors/",
     label: "Donors",
     icon: SquareUserRound,
   },
 ];
+
 const route = useRoute();
+route.matched;
 const isRouteActive = (path: string) => {
-  return route.path.startsWith(path);
+  // add trailing slash to path to normalize comparison
+  const currentRoute = route.path.endsWith("/") ? route.path : route.path + "/";
+  const currentPath = path.endsWith("/") ? path : path + "/";
+
+  return currentRoute === currentPath;
 };
 </script>
 

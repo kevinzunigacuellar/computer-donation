@@ -18,7 +18,7 @@ const userInitials = computed(() => {
   if (!name) return "AA";
   const initials = name
     .split(" ")
-    .map((n) => n[0])
+    .map((n: string) => n[0])
     .join("")
     .toUpperCase();
   return initials.length > 2 ? initials.slice(0, 2) : initials;
@@ -45,7 +45,7 @@ const signOut = async () => {
           >
             <Avatar class="h-8 w-8 rounded-lg">
               <AvatarImage
-                :src="user?.user_metadata.avatar_url"
+                :src="user?.user_metadata.avatar_url ?? ''"
                 :alt="user?.user_metadata.name"
               />
               <AvatarFallback class="rounded-lg">{{
@@ -73,7 +73,7 @@ const signOut = async () => {
             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
               <Avatar class="h-8 w-8 rounded-lg">
                 <AvatarImage
-                  :src="user?.user_metadata.avatar_url"
+                  :src="user?.user_metadata.avatar_url ?? ''"
                   :alt="user?.user_metadata.name"
                 />
                 <AvatarFallback class="rounded-lg">{{

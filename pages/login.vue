@@ -82,7 +82,7 @@ const onSubmit = handleSubmit(async (values) => {
         </form>
         <div class="mt-4 text-center text-sm">
           Don't have an account?
-          <NuxtLink to="/signup" class="underline underline-offset-4">
+          <NuxtLink to="/signup/" class="underline underline-offset-4">
             Sign up
           </NuxtLink>
         </div>
