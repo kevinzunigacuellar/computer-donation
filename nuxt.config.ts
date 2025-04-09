@@ -8,6 +8,11 @@ export default defineNuxtConfig({
       ctx.routes.clear();
     },
   },
+  router: {
+    options: {
+      hashMode: true,
+    }
+  },
   vite: {
     plugins: [tailwindcss()],
   },
