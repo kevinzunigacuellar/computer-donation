@@ -35,7 +35,7 @@ const onSubmit = handleSubmit(async (values) => {
       },
     });
     if (error) throw new Error(error.message);
-    await navigateTo("/login");
+    await navigateTo("/login/");
   } catch (error) {
     if (error instanceof Error) {
       setFieldError("form", error.message);

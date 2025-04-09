@@ -29,7 +29,7 @@ const signOut = async () => {
   if (error) {
     console.log(error);
   } else {
-    navigateTo("/login");
+    navigateTo("/login/");
   }
 };
 </script>
